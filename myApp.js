@@ -8,8 +8,10 @@ app.get('/', (req, res) => {
 // Serve Static Assets
 app.use('/public', express.static(__dirname + "/public"))
 
-
-
+// Serve JSON on a Specific Route
+app.get('/json', (req, res) => {
+  res.send({ "message": "Hello json" })
+})
 
 
 
