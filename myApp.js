@@ -20,7 +20,16 @@ app.use((req, res, next) => {
     console.log(`${req.method} ${req.path} - ${req.ip}`)
     next()
 })
+/**
+ * In the route app.get('/now', ...) chain a middleware function and the final handler. In the middleware function you should add the current time to the request object in the req.time key. You can use new Date().toString(). In the handler, respond with a JSON object, taking the structure {time: req.time}.
+ */
 
+app.get('now', function (req, res, next) {
+    req.time = new Date().toString()
+    next()
+}, function (req, res) {
+    res.send({time: req.time})
+})
 // Serve JSON on a Specific Route
 app.get('/json', (req, res) => {
     let message = "Hello json"
