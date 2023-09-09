@@ -10,7 +10,7 @@ app.use('/public', express.static(__dirname + "/public"))
 
 // Serve JSON on a Specific Route
 app.get('/json', (req, res) => {
-  const message = "Hello json"
+  let message = "Hello json"
   if (process.env.MESSAGE_STYLE === "uppercase") {
     message = message.toUpperCase()
   }
